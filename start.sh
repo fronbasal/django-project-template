@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
+if [[ $* == *--beat* ]]; then
+    echo '[APP] Running beat'
+    ENVIRONMENT="PRODUCTION" celery -A {{ project_name }} beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+fi
+
+if [[ $* == *--worker* ]]; then
+    echo '[APP] Running worker'
+    ENVIRONMENT="PRODUCTION" celery -A {{ project_name }} worker -l info
+fi
+
 if [[ $* == *--migrate* ]]; then
   echo '[APP] Migrating database'
   python manage.py migrate
