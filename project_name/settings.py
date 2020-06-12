@@ -21,6 +21,9 @@ class Common(Configuration):
         "django_extensions",
         "debug_toolbar",
 
+        'django_celery_results',
+        'django_celery_beat',
+
         "{{ project_name }}.users",
     ]
 
@@ -95,6 +98,9 @@ class Common(Configuration):
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
     AUTH_USER_MODEL = "users.User"
+
+    CELERY_RESULT_BACKEND = 'django-db'
+    CELERY_CACHE_BACKEND = 'django-cache'
 
 
 class Development(Common):
