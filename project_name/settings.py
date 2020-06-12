@@ -58,14 +58,10 @@ class Common(Configuration):
 
     WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 
-    # Database
-    # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
     DATABASES = values.DatabaseURLValue(
         "sqlite:///{}".format(os.path.join(BASE_DIR, "db.sqlite3"))
     )
 
-    # Password validation
-    # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#auth-password-validators
     AUTH_PASSWORD_VALIDATORS = [
         {
             "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -81,8 +77,6 @@ class Common(Configuration):
         },
     ]
 
-    # Internationalization
-    # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
     LANGUAGE_CODE = "en-us"
 
     TIME_ZONE = "UTC"
@@ -124,7 +118,6 @@ class Staging(Common):
     """
     The in-staging settings.
     """
-    # Security
     SESSION_COOKIE_SECURE = values.BooleanValue(False)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(False)
     SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(False)
