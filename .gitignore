@@ -1,5 +1,3 @@
-# Created by https://www.gitignore.io
-
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -87,3 +85,7 @@ local_settings.py
 
 .env
 db.sqlite3
+
+### IntelliJ ###
+
+.idea/
