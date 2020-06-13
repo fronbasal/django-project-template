@@ -18,7 +18,7 @@ This boilerplate is not suited for smaller projects and required tweaking. It in
 ## How to install
 
 ```bash
-$ django-admin startproject --template django-project-template --extension=py,md,env,yml,ini,sh project_name
+$ django-admin startproject --template https://github.com/fronbasal/django-project-template/archive/master.zip --extension=py,md,env,yml,ini,sh project_name
 $ mv example.env .env
 $ pipenv install --dev
 ```
