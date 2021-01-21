@@ -16,14 +16,12 @@ class Common(Configuration):
         "django.contrib.messages",
         "whitenoise.runserver_nostatic",
         "django.contrib.staticfiles",
-
-        'rest_framework',
+        "rest_framework",
+        "drf_generators",
         "django_extensions",
         "debug_toolbar",
-
-        'django_celery_results',
-        'django_celery_beat',
-
+        "django_celery_results",
+        "django_celery_beat",
         "{{ project_name }}.users",
     ]
 
@@ -93,31 +91,29 @@ class Common(Configuration):
 
     AUTH_USER_MODEL = "users.User"
 
-    CELERY_RESULT_BACKEND = 'django-db'
-    CELERY_CACHE_BACKEND = 'django-cache'
+    CELERY_RESULT_BACKEND = "django-db"
+    CELERY_CACHE_BACKEND = "django-cache"
 
 
 class Development(Common):
     """
     The in-development settings and the default configuration.
     """
+
     DEBUG = True
 
     ALLOWED_HOSTS = []
 
-    INTERNAL_IPS = [
-        "127.0.0.1"
-    ]
+    INTERNAL_IPS = ["127.0.0.1"]
 
-    MIDDLEWARE = Common.MIDDLEWARE + [
-        "debug_toolbar.middleware.DebugToolbarMiddleware"
-    ]
+    MIDDLEWARE = Common.MIDDLEWARE + ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
 
 class Staging(Common):
     """
     The in-staging settings.
     """
+
     SESSION_COOKIE_SECURE = values.BooleanValue(False)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(False)
     SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(False)
@@ -126,9 +122,7 @@ class Staging(Common):
     SECURE_REDIRECT_EXEMPT = values.ListValue(["localhost", "127.0.0.1"])
     SECURE_SSL_HOST = values.Value(None)
     SECURE_SSL_REDIRECT = values.BooleanValue(False)
-    SECURE_PROXY_SSL_HEADER = values.TupleValue(
-        ("HTTP_X_FORWARDED_PROTO", "https")
-    )
+    SECURE_PROXY_SSL_HEADER = values.TupleValue(("HTTP_X_FORWARDED_PROTO", "https"))
 
     DATABASES = values.DatabaseURLValue("postgresql://pg:pg@postgres/pg")
 
@@ -137,6 +131,7 @@ class Production(Staging):
     """
     The in-production settings.
     """
+
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
     SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(True)

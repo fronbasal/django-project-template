@@ -1,14 +1,14 @@
-# Django 2.0+ API project template
+# Django 3.0+ API project template
 
 This this a fork extending @jpadilla's Django template. It integrates the [Django Rest Framework](https://www.django-rest-framework.org/) and [celery](https://celeryproject.org).
 
 This boilerplate is not suited for smaller projects and required tweaking. It includes a minimal boilerplate to get you started.
 ## Features
 
-- Django 2.0+
+- Django 3.0+
 - Django Rest Framework out-of-the-box
-- Ready-to-deploy docker-compose configuration
-- Uses [Pipenv](https://github.com/kennethreitz/pipenv) - the officially recommended Python packaging tool from Python.org.
+- Ready-to-deploy docker-compose configuration including celery, postgresql and gunicorn.
+- Uses [Poetry](https://python-poetry.org/).
 - Development, Staging and Production settings with [django-configurations](https://django-configurations.readthedocs.org).
 - Get value insight and debug information while on Development with [django-debug-toolbar](https://django-debug-toolbar.readthedocs.org).
 - Collection of custom extensions with [django-extensions](http://django-extensions.readthedocs.org).
@@ -18,7 +18,7 @@ This boilerplate is not suited for smaller projects and required tweaking. It in
 ## How to install
 
 ```bash
-$ django-admin startproject --template https://github.com/fronbasal/django-project-template/archive/master.zip --extension=py,md,env,yml,ini,sh project_name
+$ django-admin startproject --template https://github.com/fronbasal/django-project-template/archive/master.zip --extension=py,md,env,yml,toml,sh project_name
 $ mv example.env .env
 $ pipenv install --dev
 ```
